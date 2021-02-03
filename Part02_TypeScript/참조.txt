@@ -1,0 +1,74 @@
+
+
+작업 환경 설정
+
+1. TypeScript 설치
+    컴퓨터 어디에서든지 사용 할 수 있도록 전역 위치에 설치 => -g
+    npm i -g typescript
+
+    npm uninstall -g typescript
+
+
+    컴파일: 
+    메뉴 '보기 => 터미널' 선택 후 터미널에서 실행. 경로는 필요에 따라 변경
+
+        기본:
+            tsc fileName
+
+        JavaScript 버전 지정:
+            tsc fileName --target es3 | es5(default) | es201
+            or
+            tsc fileName -t es3 | es5(default) | es2015
+
+        출력 폴더 지정:
+            tsc fileName -t es5 --outDir dist
+
+
+
+2. tsconfig.json 파일 생성
+    tsc --init
+
+    컴파일
+    메뉴 '보기 => 터미널' 선택 후 터미널에서 실행. 경로는 필요에 따라 변경
+
+        기본:
+            tsc
+            or
+            tsc -p
+
+
+3. 자동 빌드 파일 생성
+    
+    1) tsconfig.json 파일 변경 -> tsc --init
+        sourceMap 주석을 해제.
+        outDir 주석을 해제하고 "./dist"로 출력 폴더를 지정
+
+        {
+            "compilerOptions": {
+                /* Basic Options */
+                // "incremental": true,                   /* Enable incremental compilation */
+                "target": "es5",                          /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019' or 'ESNEXT'. */
+                "module": "commonjs",                     /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */
+                ...
+                "sourceMap": true,                     /* Generates corresponding '.map' file. */
+                // "outFile": "./",                       /* Concatenate and emit output to single file. */
+                "outDir": "./dist",                        /* Redirect output structure to the directory. */
+                // "rootDir": "./",  
+
+    2) 메뉴 '보기 - 명령 팔레트' 
+        다음 입력 후 선택 항목이 활성화 되면 선택
+            >Tasks: Configure Default Build Task (작업: 기본 빌드 작업 구성) 
+
+        다음 항목에서 다음을 선택
+            tsc: 감시 ProjectName/tsconfig.json
+
+        해당 폴더에 .vscode 폴더가 생성되고 그 안에 tasks.json 파일이 만들어져 있음
+
+
+    3) 컴파일 - 실행
+        메뉴 '터미널 - 빌드 작업 실행' 선택.
+        watch 모드로 실행되며 변경된 파일은 즉시 컴파일되어 반영된다.
+
+
+        실행 중지는 Ctrl + c
+
