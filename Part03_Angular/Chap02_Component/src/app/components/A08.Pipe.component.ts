@@ -5,15 +5,17 @@ import { Component } from '@angular/core';
     template: `
         <h3>08. PIPE</h3>
         
+        <!-- DIRECTIVE => view 요소를 변경 -->
+        <!-- pipe => view 요소의 (값)을 변경 -->
         <div class="card-body">
 
             <h5>Date</h5>
-            1. {{today}} - <br>
-            2. {{todayUTC}} -  <br>
-            3. {{todayISO}} -  <br>
-            4. Date: {{today}}<br>
-            5. Time: {{today}}<br>
-            6. All: {{today}}<br>
+            1. {{today}} - {{today | date}} - {{today | date : 'yyyy-MM-dd EEEE a hh:mm:ss'}}<br>
+            2. {{todayUTC}} - {{todayUTC | date}} - {{todayUTC | date : 'yy-M-d EEE a h:m:s'}} <br>
+            3. {{todayISO}} - {{todayISO | date}} - {{todayISO | date : 'y-MM-dd EEEE a hh:mm:ss'}} <br>
+            4. Date: {{today}} - {{today | date : 'fullDate'}} - {{today | date : 'longDate'}} - {{today | date : 'mediumDate'}} - {{today | date : 'shortDate'}}<br>
+            5. Time: {{today}} - {{today | date : 'mediumTime'}} - {{today | date : 'shortTime'}}<br>
+            6. All: {{today}} - {{today | date : 'medium'}} - {{today | date : 'short'}}<br>
             <br>
 
             <h5>통화코드 ISO 4217 규격에 따름.</h5>

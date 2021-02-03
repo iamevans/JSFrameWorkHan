@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
                 <input type="number" class="form-control" [(ngModel)]="age">
             </div>
 
-
+            <a06-child></a06-child>
         </div>
         
     `
@@ -23,26 +23,32 @@ export class A06LifeComponent {
         console.log(`A06 Parent Constructor => ${this.age}`);
     }
 
+    // 속성이 만들어진 시점. 초기화 후 어떤 로직에 의해 변경 값이 있는 경우
     ngOnInit(): void {
         console.log(`A06 Parent ngOnInit => ${this.age}`);
     }
 
+    // View Model(Control)의 속성, 메서드 등이 완성. 1번만 실행됨
     ngAfterContentInit(): void {
         console.log(`A06 Parent ngAfterContentInit => ${this.age}`);
     }
 
+    // View Model(Control)의 속성, 메서드 등이 변경. 변경될때마다 실행됨
     ngAfterContentChecked(): void {
         console.log(`A06 Parent ngAfterContentChecked => ${this.age}`);
     }
 
+    // View 완성. 1번만 실행됨
     ngAfterViewInit(): void {
         console.log(`A06 Parent ngAfterViewInit => ${this.age}`);
     }
 
+    // View 변경. View가 변경될때마다 실행됨
     ngAfterViewChecked(): void {
         console.log(`A06 Parent ngAfterViewChecked => ${this.age}`);
     }
 
+    // 컴퍼넌트가 View에서 사라질때
     ngOnDestroy(): void {
         console.log(`A06 Parent Constructor => ${this.age}`);
     }

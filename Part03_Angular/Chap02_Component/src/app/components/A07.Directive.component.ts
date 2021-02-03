@@ -9,12 +9,12 @@ import { Component } from '@angular/core';
         
         <div class="card-body">
             <h5>ngIf</h5>
-            <div>
+            <div *ngIf="view else elseBlock">  <!-- * => <template></template> -->
                 Learn one way to build applications with Angular and reuse your code and<br>
                 abilities to build apps for any deployment target.<br>
                 For web, mobile web, native mobile and native desktop.
             </div>
-            <ng-template><div>Content to render when condition is false.</div></ng-template>
+            <ng-template #elseBlock><div>Content to render when condition is false.</div></ng-template>
             <div>
                 <button (click)="changeView()">{{view ? 'HIDE' : 'SHOW'}}</button>
             </div>
@@ -27,11 +27,11 @@ import { Component } from '@angular/core';
                 <button (click)="changeSwitch('guest')">Guest</button>
                 <button (click)="changeSwitch('abc')">ABC</button>
                 <br>
-                <div>
-                    <span>Admin</span>
-                    <span>Member</span>
-                    <span>Guest</span>
-                    <span>회원등급을 선택해 주세요.</span>
+                <div [ngSwitch]="grade">
+                    <span *ngSwitchCase="'admin'">Admin</span>
+                    <span *ngSwitchCase="'member'">Member</span>
+                    <span *ngSwitchCase="'guest'">Guest</span>
+                    <span *ngSwitchDefault>회원등급을 선택해 주세요.</span>
                 </div>
             </div>
             <br>
@@ -46,12 +46,13 @@ import { Component } from '@angular/core';
                     <td>KOR</td>
                     <td>ENG</td>
                 </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                <!-- index, first, last, odd, even -->
+                <tr *ngFor="let item of students; let i = index; let f = first ">
+                    <td>{{i}} / {{f}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.age}}</td>
+                    <td>{{item.kor}}</td>
+                    <td>{{item.eng}}</td>
                 </tr>
             </table>
         </div>
@@ -64,7 +65,7 @@ export class A07DirectiveComponent {
     public grade: string = 'normal';
 
     public students: objType[] = [
-        {name: 'HongGilDong', age: 20, kor: 100, eng: 80},
+        {name: 'HongGilDong', age: 20, kor: 100, eng: 80},      // item
         {name: 'NolBu', age: 50, kor: 90, eng: 90},
         {name: 'HungBu', age: 40, kor: 70, eng: 60},
     ]
@@ -79,4 +80,9 @@ export class A07DirectiveComponent {
 
 }
 
-type objType = {name: string, age: number, kor: number, eng: number};
+interface objType {
+    name: string; 
+    age: number; 
+    kor: number; 
+    eng: number
+};
