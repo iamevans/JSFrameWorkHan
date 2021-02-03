@@ -5,7 +5,7 @@ import { Component } from '@angular/core'
     template: `
         <div>
             <h5>Home Component</h5>
-
+            
             This is Home Component.
         </div>
     `

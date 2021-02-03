@@ -10,20 +10,26 @@ import { ActivatedRoute } from '@angular/router';
             <br>
 
             <div>
-                {{check}} / {{name}} / {{age}}
+                {{check}} / {{name}} / {{age + 100}}
             </div>
         </div>
     `
 })
 export class ProductArgsComponent{
-    public check: boolean;
+    public check: string;
     public name: string;
     public age: number;
 
     constructor(public ac: ActivatedRoute){}
 
     ngOnInit() {
-        
+        this.ac.queryParams.subscribe(
+            (data: {check: string, name: string, age: string}) => {
+                this.check = data.check;
+                this.name = data.name;
+                this.age = Number(data.age)
+            }
+        )
     }
 }
 

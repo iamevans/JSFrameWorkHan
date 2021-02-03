@@ -10,8 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 
             <div>
                 <p>
-                    <a>Description</a> | 
-                    <a>Seller Info</a>
+                    <a routerLink="desc">Description</a> | 
+                    <a [routerLink]="['seller']">Seller Info</a>
                 </p>
 
                 <router-outlet></router-outlet>

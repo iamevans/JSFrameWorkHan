@@ -22,6 +22,18 @@ export class ProductDataComponent{
     constructor(private ac: ActivatedRoute){}
     
     ngOnInit(): void {
-        
+        this.ac.params.subscribe(           // data/:name
+            (data: any) => {
+                this.id = data.name
+            }
+        )
+        this.ac.data.subscribe(
+            (data: any) => {
+                let first = data[0];        // {check: true, name: 'NolBu', age: 30},
+                this.check = first.check;
+                this.name = first.name;
+                this.age = first.age;
+            }
+        )
     }
 }
