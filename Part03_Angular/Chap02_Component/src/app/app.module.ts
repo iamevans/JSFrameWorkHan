@@ -11,6 +11,7 @@ import { A05FormComponent } from './components/A05.Form.component';
 import { A06LifeChildComponent, A06LifeComponent } from './components/A06.Llife.component';
 import { A07DirectiveComponent } from './components/A07.Directive.component';
 import { A08PipeComponent } from './components/A08.Pipe.component';
+import { AbbrPipe } from './pipes/Abbr.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,11 @@ import { A08PipeComponent } from './components/A08.Pipe.component';
       A01CurrencyComponent, A02BindingComponent, A03InputComponent, A03InputChildComponent, 
       A04OutputComponent, A04OutputChildComponent, A05FormComponent, 
       A06LifeComponent, A06LifeChildComponent, A07DirectiveComponent,
-      A08PipeComponent
+      A08PipeComponent,
+
+
+      // pipe
+      AbbrPipe,
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule
