@@ -46,9 +46,13 @@ import { Component } from '@angular/core';
         <div class="panel-body">
             <h5>양방향 바인딩</h5>
 
-            양방향 바인딩: <input type="text" class="form-control" ><br>
-            양방향 바인딩: <input type="text" class="form-control" ><br>
-            Method 방식: <input type="text" class="form-control" ><br>
+            <!-- app.module에 FormsModule이 로드되어야 사용가능 
+                event binding은 자바스크립트의 이벤트에서 on 생략하고 이름만 ()묶어서 구현
+                이벤트 전달은 $event
+            -->
+            양방향 바인딩: <input type="text" class="form-control" [(ngModel)]="name"><br>
+            양방향 바인딩: <input type="text" class="form-control" [(ngModel)]="name"><br>
+            Method 방식: <input type="text" class="form-control" [value]="name" (input)="onChangeName($event)"><br>
         </div>
         <br>
 
@@ -56,20 +60,21 @@ import { Component } from '@angular/core';
             <h5>이벤트 바인딩</h5>
 
             <div>{{result}}</div>
-            innerText: <span></span><br>
-            innerHTML: <span></span><br>
-            <button>명령식</button>
+            innerText: <span [innerText]="result"></span><br>
+            innerHTML: <span [innerHTML]="result"></span><br>
+            <button (click)="resultChange()">명령식</button>
         </div>
         <br>
 
         <div class="panel-body">
             <h4>Class Style Binding</h4>
 
-            <div>1. 동해물과 백두산이 마르고 닳도록 하느님이 보우하사..</div>
-            <div>2. 동해물과 백두산이 마르고 닳도록 하느님이 보우하사..</div>
-            <div>3. 동해물과 백두산이 마르고 닳도록 하느님이 보우하사..</div>
+            <div [ngClass]="'green'">1. 동해물과 백두산이 마르고 닳도록 하느님이 보우하사..</div>
+            <div [ngClass]="greenColor">1. 동해물과 백두산이 마르고 닳도록 하느님이 보우하사..</div>
+            <div [ngClass]="[greenColor, 'bold']">2. 동해물과 백두산이 마르고 닳도록 하느님이 보우하사..</div>
+            <div [ngClass]="{green: true, bold: true}">변수 참조는 안됨. 3. 동해물과 백두산이 마르고 닳도록 하느님이 보우하사..</div>
 
-            <div>4. 동해물과 백두산이 마르고 닳도록 하느님이 보우하사..</div>
+            <div [ngStyle]="{color: 'orange', fontWeight: 'bold'}">4. 동해물과 백두산이 마르고 닳도록 하느님이 보우하사..</div>
         </div>
 
         
@@ -102,7 +107,10 @@ export class A02BindingComponent {
         this.result = '<b>Hello World!!!</b>';
     }
 
+    public onChangeName(evt: Event) {
+        let inputField: HTMLInputElement = evt.target as HTMLInputElement;
+        this.name = inputField.value;
+    }
+
 }
 
-
-http://java13716.cafe24.com/download/js2.zip
