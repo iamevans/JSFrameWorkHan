@@ -11,6 +11,8 @@ import { ProductDataComponent } from './components/product02.data.component';
 import { ProductArgsComponent } from './components/product03.args.component';
 import { ProductChildComponent } from './components/product04.childMain.component';
 
+import { LuxuryModule } from './components/luxury/luxury.module';
+
 @NgModule({
   declarations: [
     AppComponent,ProductChildComponent, SellerComponent, DescriptionComponent, 
@@ -19,6 +21,9 @@ import { ProductChildComponent } from './components/product04.childMain.componen
   ],
   imports: [
     BrowserModule, 
+
+    // 하위 모듈은 로드만 하면 끝
+    LuxuryModule, 
 
     // 사용하는 컴퍼넌트는 declarations에도 등록하자..
     RouterModule.forRoot([
@@ -49,7 +54,8 @@ import { ProductChildComponent } from './components/product04.childMain.componen
           ]
       },
 
-      
+      // Lazy load는 import를 먼저하지 않고 동적 import를 이용한다.
+      { path: 'lazy',   loadChildren: () => import("src/app/components/luxuryLazy/lazy.module").then( m => m.LazyModule)}
     ])
   ],
   providers: [],
