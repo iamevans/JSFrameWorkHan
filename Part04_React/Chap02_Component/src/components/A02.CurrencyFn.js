@@ -3,8 +3,13 @@
 import React, { useState } from 'react';
 
 function CurrencyFunction(props) {
+    
     // class의 state
     // 1개 이상 필요에 따라 [변수명, 변수 변환함수명] = useStage({..})
+    // useState => 로컬 상태관리(변수, view 변경)
+    // useContext(리덕스), useReducer => 글로벌 상태관리
+    // useEffect => 화면 갱신
+    // JSX
     const [data, setData] = useState({
         qty: 3,
         cost: 5,
