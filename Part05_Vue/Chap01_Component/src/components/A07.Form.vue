@@ -5,19 +5,19 @@
         <br>
 
         Text Field: <span class="orange">{{name}}</span>
-        <input type="text" class="form-control" v-model="name"><br>
+        <input type="text" class="form-control" v-model.trim="name"><br>
 
         Number Field: <span class="orange">{{age + 10}}</span>
-        <input type="text" class="form-control" v-model="age"><br>
+        <input type="number" class="form-control" v-model.number="age"><br>
 
         Lazy Field: <span class="orange">{{address}}</span>
-        <input type="text" class="form-control" v-model="address"><br>
+        <input type="text" class="form-control" v-model.lazy="address"><br>
 
 
         Radio Button: <span class="orange">{{gender}}</span><br>
-        <input type="radio" name="gender" value="남자" v-model="gender">Male
-        <input type="radio" name="gender" value="여자" v-model="gender">Female
-        <input type="radio" name="gender" value="어린이" v-model="gender">Children <br>
+        <input type="radio" name="gender" value="남자"      v-model="gender">Male
+        <input type="radio" name="gender" value="여자"      v-model="gender">Female
+        <input type="radio" name="gender" value="어린이"    v-model="gender">Children <br>
         <br>
 
         Single Check: <span class="orange">{{check}}</span><br>
@@ -25,14 +25,14 @@
         <br>
 
         CheckBox: <span class="orange">{{fruit}}</span><br>
-        <input type="checkbox" value="apple" v-model="fruit">사과,
-        <input type="checkbox" value="banana" v-model="fruit">바나나,
-        <input type="checkbox" value="melon" v-model="fruit">멜론<br>
+        <input type="checkbox" name="abc" value="apple"     v-model="fruit">사과,
+        <input type="checkbox" name="abc" value="banana"    v-model="fruit">바나나,
+        <input type="checkbox" name="abc" value="melon"     v-model="fruit">멜론<br>
         <br>
 
         SelectBox: <span class="orange">{{inCurr}}</span><br>
         <select class="form-control" v-model="inCurr">
-        <option v-for="(item, index) in currencies" v-bind:key="index">{{item}}</option>
+            <option v-for="(item, index) in currencies" v-bind:key="index">{{item}}</option>
         </select>
         <br>
 
@@ -47,7 +47,7 @@
         <br>
 
 
-        Radio Button Object Value: <span class="orange">{{person}} / {{person.name}}</span><br>
+        Radio Button Object Value: <span class="orange">{{person}} / {{person.name}} {{person.age}}</span><br>
         <input type="radio" name="person" v-model="person" v-bind:value="{name: 'NolBu', age: 40}">놀부
         <input type="radio" name="person" v-model="person" v-bind:value="{name: 'HungBu', age: 30}">흥부
         <input type="radio" name="person" v-model="person" v-bind:value="{name: 'BangJa', age: 20}">방자 <br>
@@ -58,8 +58,8 @@
         <input type="text" class="form-control" v-bind:value="name" v-on:input="changeName"><br>
         <br>
 
-        <input type="text" class="form-control"><br>
-        <button v-on:click="clickEvent">Click</button>
+        <input type="text" class="form-control" ref="inputField"><br>
+        <button v-on:click="clickEvent" ref="btn">Click</button>
 
     </div>
 </template>
@@ -88,6 +88,8 @@ export default {
         },
         clickEvent: function() {
             console.log(this.$refs);
+            this.$refs.inputField.style.color = 'orange';
+            this.$refs.btn.innerText = "CLICKED"
             
         }
     }

@@ -3,20 +3,20 @@
     <div id="app" class="card-body" v-cloak>
         <h3>6. Style Binding</h3>
 
-        <div>{{hello}}</div>
-        <div>{{hello}}</div>
-        <div>{{hello}}</div>
+        <div v-bind:style="{color: 'orange', fontWeight: 'bold'}">{{hello}}</div>
+        <div :style="five">{{hello}}</div>
+        <div :style="[five, four]">{{hello}}</div>
         <br>
 
         <h3>Class Binding</h3>
 
         <div class="three">{{hello}}</div>
-        <div class="three">{{hello}}</div>
+        <div class="three" v-bind:class="oneClass">{{hello}}</div>
 
         <!-- 일반 클래스만 적용된다 [변수 지정 안됨] -->
-        <div class="three">{{hello}}</div>
-        <div class="three">{{hello}}</div>
-        <input type="checkbox" v-model="check"> Check<br />
+        <div class="three" :class="{one: true, two: check}">{{hello}}</div>
+        <div class="three" :class="[oneClass, {two: check}]">{{hello}}</div>
+        <input type="checkbox" v-model="check">Check / {{check}}<br />
         <br>
 
         <!-- data의 값 변경으로 스타일 조작 -->
