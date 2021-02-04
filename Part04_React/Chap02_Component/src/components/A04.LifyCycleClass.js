@@ -39,6 +39,7 @@ class A04LifeCycle extends Component {
     shouldComponentUpdate(nowProps, nowState) {
         console.log("5. Life Cycle shouldComponentUpdate");
 
+        // if(true) return false
         // return false;                                    // 3번 render가 실행되지 않는다
         return true;                                        // 3번 render가 실행되어 DOM이 갱신된다
     };
@@ -49,6 +50,7 @@ class A04LifeCycle extends Component {
         console.log("6. Life Cycle getSnapshotBeforeUpdate");
 
         if(prop.color === state.color) return prop.color;
+        
         return null;
     }
 
