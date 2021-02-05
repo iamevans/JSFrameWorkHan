@@ -2,6 +2,7 @@
   <div class="card-body">
     <h1>Vue Components</h1>
     
+    <A08Custom />
     <A07Form />
     <A06StyleClass />
     <A05Event />
@@ -27,12 +28,13 @@ import A04LifeCycle from './components/A04.LifeCycle';
 import A05Event from './components/A05.Event';
 import A06StyleClass from './components/A06.StyleClass';
 import A07Form from './components/A07.Form';
+import A08Custom from './components/A08.Custom';
 
 export default {
   name: 'App',
   components: {
     A01Currency, A02Binding, A03Repeater, A04LifeCycle, A05Event,
-    A06StyleClass, A07Form, 
+    A06StyleClass, A07Form, A08Custom
   }
 }
 </script>
